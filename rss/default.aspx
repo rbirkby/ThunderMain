@@ -12,7 +12,7 @@ void Page_Load(object sender, EventArgs e) {
 	XmlDeclaration xmlDeclaration = output.CreateXmlDeclaration("1.0", null, null);
 	output.InsertBefore(xmlDeclaration, output.DocumentElement);
 
-	XmlComment poweredByComment = output.CreateComment("\n\n **** Powered by Mono and Ubuntu on ARM SheevaPlug ;-) **** \n\n");
+	XmlComment poweredByComment = output.CreateComment("\n\n **** Powered by ASP.Net on Azure **** \n\n");
 	output.InsertBefore(poweredByComment, output.DocumentElement);
 
 	XmlElement rssElement = output.CreateElement("rss");
