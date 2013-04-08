@@ -1,15 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Xml;
-
 
     /// <summary>
     /// Useful debugging class. Simply wrap any XmlReader in this Decorator and
     /// obtain useful AOP-like method entry information
     /// </summary>
     public class XmlReaderDecorator : XmlReader {
-        XmlReader _internal;
+        private readonly XmlReader _internal;
 
         /// <summary></summary>
         public XmlReaderDecorator(XmlReader internalReader) {
