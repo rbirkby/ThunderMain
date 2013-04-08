@@ -6,8 +6,10 @@
 <%@ Import Namespace="System.Xml" %>
 
 <script runat="server">
+
     void Page_Load(object sender, EventArgs e)
     {
+        System.Diagnostics.Trace.TraceInformation("Scraping MSDownloads page.");
         var output = new XmlDocument();
 
         XmlDeclaration xmlDeclaration = output.CreateXmlDeclaration("1.0", null, null);
@@ -43,16 +45,19 @@
         channelLastBuildDateElement.InnerText = DateTime.Now.ToUniversalTime().ToString(new DateTimeFormatInfo().RFC1123Pattern);
         channelElement.AppendChild(channelLastBuildDateElement);
 
-        var sgmlReader = new SgmlReader();
-        sgmlReader.DocType = "HTML";
-        sgmlReader.CaseFolding = Sgml.CaseFolding.ToLower;
-        sgmlReader.Href = "http://www.microsoft.com/download/en/search.aspx?q=t%2a&p=0&r=50&t=&s=availabledate~Descending";
+        var sgmlReader = new SgmlReader
+            {
+                DocType = "HTML", 
+                CaseFolding = CaseFolding.ToLower, 
+                Href = "http://www.microsoft.com/download/en/search.aspx?q=t%2a&p=0&r=50&t=&s=availabledate~Descending"
+            };
 
         var downloads = new XmlDocument();
         downloads.Load(new XmlReaderDecorator(sgmlReader));
 
         XmlNodeList items = downloads.SelectNodes("//*[local-name()='td'][@class='descTD']");
-
+        System.Diagnostics.Trace.TraceInformation("Found {0} items.", items.Count);
+        
         foreach (XmlElement item in items)
         {
             XmlElement itemElement = output.CreateElement("item");
@@ -77,7 +82,9 @@
             }
         }
 
+        System.Diagnostics.Trace.TraceInformation("Generated RSS feed with {0} items.", channelElement.ChildNodes.Count);
         Response.Write(output.OuterXml);
     }
+
 
 </script>
