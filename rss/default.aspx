@@ -69,7 +69,7 @@
             XmlElement itemLinkElement = output.CreateElement("link");
 
             string linkUrl = item.SelectSingleNode("*[local-name()='div'][@class='link']").FirstChild.Attributes["href"].InnerText;
-            itemLinkElement.InnerText = "http://www.microsoft.com/en-us/download/" + linkUrl + "#tm";
+            itemLinkElement.InnerText = "http://www.microsoft.com" + linkUrl + "#tm";
             itemElement.AppendChild(itemLinkElement);
 
             XmlElement itemDescriptionElement = output.CreateElement("description");

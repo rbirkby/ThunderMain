@@ -1,6 +1,6 @@
 <%@ Page Language="c#" ContentType="text/xml" ResponseEncoding="utf-8" Debug="false" %>
 
-<%@ OutputCache Duration="3600" VaryByParam="none" %>
+<%-- @ OutputCache Duration="3600" VaryByParam="none" --%>
 <%@ Import Namespace="Sgml" %>
 <%@ Import Namespace="System.Globalization" %>
 <%@ Import Namespace="System.Xml" %>
@@ -69,7 +69,7 @@
             XmlElement itemLinkElement = output.CreateElement("link");
 
             string linkUrl = item.SelectSingleNode("*[local-name()='div'][@class='link']").FirstChild.Attributes["href"].InnerText;
-            itemLinkElement.InnerText = "http://www.microsoft.com/en-us/download/" + linkUrl + "#tm";
+            itemLinkElement.InnerText = "http://www.microsoft.com" + linkUrl + "#tm";
             itemElement.AppendChild(itemLinkElement);
 
             XmlElement itemDescriptionElement = output.CreateElement("description");
