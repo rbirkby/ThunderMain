@@ -76,7 +76,7 @@
             itemDescriptionElement.InnerText = item.SelectSingleNode("*[local-name()='div'][@class='description']").InnerText;
             itemElement.AppendChild(itemDescriptionElement);
 
-            if (!linkUrl.StartsWith("http"))
+            if (!linkUrl.StartsWith("http") && !linkUrl.StartsWith("/en-us/download/http"))
             {
                 channelElement.AppendChild(itemElement);
             }
