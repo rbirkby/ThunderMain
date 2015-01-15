@@ -1,0 +1,33 @@
+/*
+Theme Name: ThunderMain
+Description: Child theme for celestial-lite 
+Author: Richard Birkby
+Template: celestial-lite
+*/
+
+@import url("../celestial-lite/style.css");
+/* Don't know why Celestial theme isn't adding this stylesheet to the HEAD. The samples at 
+   http://fonts.googleapis.com/css?family=Abel:400&subset=latin
+   show it being added */
+@import url("http://fonts.googleapis.com/css?family=Abel:400&amp;subset=latin");
+
+.home #st-banner0-wrapper {background-color:#343842 !important}
+
+#st-cta {margin-top:10px}
+
+h1, h3 {text-shadow: 2px 1px 3px #ccc !important}
+
+#site-navigation ul li:hover > ul {
+padding: 0 0 3px 0 !important;
+-webkit-border-radius: 3px !important;
+border-radius: 3px !important;
+border-bottom:0 !important;
+}
+
+#st-footer-wrapper { box-shadow:0 -3px 3px #ccc; }
+
+.rsswidget img {display:inline}
+
+#st-footer-wrapper a:hover, #site-navigation li li a:hover {
+color: #d27e0e !important;
+}
